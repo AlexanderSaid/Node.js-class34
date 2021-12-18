@@ -1,4 +1,6 @@
 import express from "express";
+import keys from "./sources/keys.js"
+import fetch from "node-fetch";
 
 const app = express();
 app.use(express.json());
@@ -7,9 +9,9 @@ app.get("/", (req, res) => {
   res.send("hello from backend to frontend!");
 });
 
-app.post("/weather", (req, res) => {
+app.post("/weather/:cityName", (req, res) => {
   const cityName = req.body.cityName;
-  res.send(cityName);
+  
 });
 
 const PORT = process.env.PORT || 3000;
