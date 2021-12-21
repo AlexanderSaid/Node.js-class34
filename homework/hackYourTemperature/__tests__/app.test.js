@@ -46,4 +46,15 @@ describe("POST /weather", () => {
       expect(response.body.weatherText).toBe("City is not found");
     });
   });
+  /**
+   * In the instruction we should test if the client didn't send a city name
+   * but I think this should be handled in the layout as a required
+   * I did the test anyway;
+   */
+  describe("User didn't send a city name", () => {
+    it("Should response with a 400 status code", async () => {
+      const response = await request.post("/weather").send({ cityName: "" });
+      expect(response.statusCode).toBe(400);
+    });
+  });
 });
